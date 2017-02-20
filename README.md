@@ -32,7 +32,7 @@ In order of appearance in manuscript:
 * BLAST+ https://www.ncbi.nlm.nih.gov/books/NBK279690/
 <br></br>
 
-## Initial processing of high throughput sequence data 
+## Processing of amplicon sequence data 
 
 ### Demultiplexing
 
@@ -42,18 +42,24 @@ In order of appearance in manuscript:
 
 This split the sequence file into separate files for each sample. Next, each sample file was demultiplexed by primer sequence to sort into separate files for each sample/marker combination. This was run in the bash script **ref_seq_demultiplex_primer.sh** that combined trimming the adapter sequence with the Cutadapt tool, followed by demultiplexing (by primer sequence) using the same script **fastx_barcode_splitter.pl**, as above. 
 <br></br>
-### Quality and length filtering of sequences
+### Quality filtering
 
-
-
-ccmp2\_ref\_trimmer.sh
-trnL\_ref_trimmer.sh
+Using the bash scripts **ccmp2\_ref\_trimmer.sh** and **trnL\_ref\_trimmer.sh**, all sequences were filtered for quality and length using cutadapt and the fastx toolkit, and primer sequences were trimmed off each end. Because sequence reads could be in either orientation, and to ensure accurate quality from both forward and reverse ends, each read was run through trimming and quality filtering, reverse complemented, and then filters were rerun. All trimmed reads were then combined. 
 
 <br></br>
-### Creating consensus sequences
+### Creating consensus sequences for marker comparison
 
-cluster\_consensus.sh 
-(for now, add consensus_builder later)
+The reads for each species sample were clustered using USEARCH and the most common centroid sequence was extracted to a new file to represent the consensus sequence. The tools were piped together using the script **cluster\_consensus.sh**. Where possible, resulting consensus sequences were compared to existing NCBI sequences of the same species/marker, to confirm the accuracy of the method.
+<br></br>
+
+### Calculation of pairwise distances
+
+<br></br>
+<br></br>
+## Processing of soil metabarcoding data
+
+
+
 
 
 
