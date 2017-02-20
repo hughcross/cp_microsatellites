@@ -44,8 +44,11 @@ This split the sequence file into separate files for each sample. Next, each sam
 <br></br>
 ### Quality and length filtering of sequences
 
-ccmp2\_camref\_trim.sh (now ccmp2\_ref\_trim.sh)
-cam\_trnL_trimmer.sh
+
+
+ccmp2\_ref\_trimmer.sh
+trnL\_ref_trimmer.sh
+
 <br></br>
 ### Creating consensus sequences
 
