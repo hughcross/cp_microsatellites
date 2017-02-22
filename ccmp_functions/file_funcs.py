@@ -5,7 +5,6 @@ from Bio.Seq import Seq
 from Bio.Blast import NCBIXML
 from Bio.SeqRecord import SeqRecord
 from Bio.Alphabet import IUPAC
-##from cStringIO import StringIO
 from Bio import SeqIO
 ##import sys
 

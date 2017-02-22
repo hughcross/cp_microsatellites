@@ -58,6 +58,7 @@ The reads for each species sample were clustered using USEARCH and the most comm
 
 ### Calculation of pairwise distances
 
+The program T-Coffee was used to align all consensus sequences for each family, then calculate pairwise distances among all species in each family for both *trn*L and ccmp2, and then average distance among species within each family was output to a file, using the bash script **pairwise_distance_measure.sh**
 <br></br>
 <br></br>
 ## Processing of soil metabarcoding data
@@ -86,6 +87,8 @@ All OTU sequences were searched against NCBI database using blastn on the comman
 `blastn -query dc_ccmp_sub80_swarms.fasta -db nt -out blast_dc_ccmp_sub80_swarms_fmt6_ev5.txt -evalue 1e-5 -max_target_seqs 20 -outfmt "6 qseqid sseqid staxids sscinames scomnames length evalue qcovs pident nident sstart send stitle sseq"`
 
 All plant genera that were found in this search in both markers were extracted from the blast output using the python script **new_blast_seq_extractor.py**. These sequences were imported into Geneious for alignment and comparison of the two markers. 
+
+Note: since creating this pipeline, I have made an all-purpose blast-parsing script that can read any blast output in tabular format. See https://github.com/hughcross/genbanking for details. 
 
 
 
