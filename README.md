@@ -27,6 +27,8 @@ In order of appearance in manuscript:
 
 * OBItools https://git.metabarcoding.org/obitools/obitools/wikis/home
 
+* VSEARCH https://github.com/torognes/vsearch
+
 * SWARM https://github.com/torognes/swarm
 
 * BLAST+ https://www.ncbi.nlm.nih.gov/books/NBK279690/
@@ -57,6 +59,21 @@ The reads for each species sample were clustered using USEARCH and the most comm
 <br></br>
 <br></br>
 ## Processing of soil metabarcoding data
+
+### Demultiplexing and quality filtering
+
+Raw sequence reads were processed the same as with the amplicon sequencing products, except that no additional sorting into separate species samples was necessary. After demultiplexing, quality and length filtering was done with the bash script **soil_amplicon_trimmer.sh**, separately on ccmp2 and *trn*L samples (using correct primer sequences). 
+
+### OTU clustering
+
+For comparison among samples that differed in number of reads, subsamples were taken of the larger samples using the obisample tool (from Obitools, see above). For example:
+
+`obisample -s 4000 full_DeepCreeksub2_td21_261.fasta > sub1_DeepCreeksub2_td21_261.fasta`
+
+Clustering of the sequence reads into operational taxonomic units, or OTUs, was done using the program swarm, using the related program VSEARCH to dereplicate the sequences first (see references above). As multiple samples and subsamples were clustered, a bash script, **batch_swarm.sh** was used to run through the steps on all files, and output to a text file the number of swarms (OTUs), singletons, and total swarms of more than one (ie without singletons). 
+
+### Subsampling and removing repeats from reads
+
 
 
 
